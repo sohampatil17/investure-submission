@@ -4,7 +4,6 @@ const csv = require('csv-parser');
 const fs = require('fs');
 
 const app = express();
-const PORT = process.env.PORT || 5001;
 
 app.use(cors());
 
@@ -49,6 +48,8 @@ fs.createReadStream('../data/rawdata.csv')
   });
   
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+  const PORT = process.env.PORT || 5001;
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+  

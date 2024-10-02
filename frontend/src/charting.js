@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import data from './data/data.json';
-
 import {
   LineChart,
   Line,
@@ -12,19 +10,18 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 import { FaSun, FaMoon } from 'react-icons/fa';
-import data from './data/data.json';
 import './charting.css';
 
 const Charting = () => {
-  const [chartData, setChartData] = useState(data);
+  const [chartData, setChartData] = useState([]); 
   const [isDarkTheme, setIsDarkTheme] = useState(true);
 
   // Fetch the cumulative return data from the backend API when the component is mounted
   useEffect(() => {
     axios
-      .get('http://localhost:5001/api/total-return')
+      .get('https://investure-submission.onrender.com/api/total-return')
       .then((response) => {
-        setData(response.data);
+        setChartData(response.data);
       })
       .catch((error) => {
         console.error('There was an error fetching the data!', error);
@@ -53,7 +50,7 @@ const Charting = () => {
       {/* Responsive container to adapt chart size to different screen widths */}
       <ResponsiveContainer width="100%" height={750}>
         <LineChart
-          data={data}
+          data={chartData} // Updated to use chartData instead of undefined "data"
           margin={{
             top: 40,
             right: 60,
