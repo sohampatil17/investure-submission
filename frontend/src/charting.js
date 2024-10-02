@@ -19,14 +19,15 @@ const Charting = () => {
   // Fetch the cumulative return data from the backend API when the component is mounted
   useEffect(() => {
     axios
-      .get('https://investure-submission.onrender.com/api/total-return')
+      .get('https://investure-submission.onrender.com/api/total-return') 
       .then((response) => {
-        setChartData(response.data);
+        setChartData(response.data); // Set data received from API to chartData
       })
       .catch((error) => {
         console.error('There was an error fetching the data!', error);
       });
   }, []);
+  
 
   // Toggle between dark and light themes
   const toggleTheme = () => {
