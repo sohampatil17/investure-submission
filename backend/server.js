@@ -10,7 +10,7 @@ app.use(cors());
 
 let data = [];
 
-fs.createReadStream('/Users/I212229/Desktop/Projects/investure-submission/data/rawdata.csv') 
+fs.createReadStream('../data/rawdata.csv') 
   .pipe(csv())
   .on('data', (row) => {
     data.push(row);
