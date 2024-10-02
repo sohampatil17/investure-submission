@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import data from './data/data.json';
+
 import {
   LineChart,
   Line,
@@ -10,10 +12,11 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 import { FaSun, FaMoon } from 'react-icons/fa';
+import data from './data/data.json';
 import './charting.css';
 
 const Charting = () => {
-  const [data, setData] = useState([]);
+  const [chartData, setChartData] = useState(data);
   const [isDarkTheme, setIsDarkTheme] = useState(true);
 
   // Fetch the cumulative return data from the backend API when the component is mounted
